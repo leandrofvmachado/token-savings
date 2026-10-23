@@ -1,0 +1,54 @@
+{
+  "1": {
+    "task": "Add a 'discount code' feature to this app, from idea to production: ideation, code, tests, PR, deploy. No research needed.",
+    "answers": "Done = codes apply a percent discount in app/cart.py, covered by tests; verification is the repo test command. Stop if tests fail twice. Do not change the pricing module. Pass context between steps with handoff files."
+  },
+  "2": {
+    "task": "Research how three sites (stripe.com/docs, paddle.com/docs, lemonsqueezy.com/docs) handle discount codes and compare them.",
+    "answers": "Done = one comparison table in notes/compare.md covering all three. Reviewer checks the table against a rubric of 5 attributes. Each site writes its own notes file; a final step merges them. Stop if a site cannot be read."
+  },
+  "3": {
+    "task": "Add a 'region' key to both services/billing.py and services/shipping.py. Both read and write config/shared.json.",
+    "answers": "Done = both services read the key and tests pass. Verification is the repo test command. Stop if tests fail twice. Do not change config schema beyond the new key. Handoff files for context."
+  },
+  "4": {
+    "task": "Build an API endpoint GET /discounts and a client function in app/client.py that calls it, then write integration tests that need both.",
+    "answers": "Done = endpoint, client and tests exist and tests pass via the repo test command. Stop if tests fail twice. Do not change existing endpoints. Handoff files for context."
+  },
+  "5": {
+    "task": "Prepare a quarterly plan covering finance, marketing and sales for a small SaaS. Output goes in plan/.",
+    "answers": "Done = one plan file per domain plus plan/summary.md reconciling them. Reviewer checks each against a rubric (numbers consistent, owners named). Sales targets feed the finance budget. Stop if numbers conflict twice. Handoff files for context."
+  },
+  "6": {
+    "task": "Fix the failing test suite and keep going with the work tracked in TODO.md.",
+    "answers": "Ask only if the repo cannot answer. Do not change test files. Stop if tests fail twice."
+  },
+  "7": {
+    "task": "Rewrite docs/guide.md for a non-technical audience.",
+    "answers": "Done = no jargon, every section has an example, under 800 words. No command checks this. Do not change docs/api.md. Stop if the reviewer rejects twice. Handoff files for context."
+  },
+  "8": {
+    "task": "Redesign docs/landing.html. I know the direction (calmer, more whitespace) but not the result.",
+    "answers": "Hard: file is valid HTML and has no console-style placeholders. Open: feels calmer, judged by the reviewer and me at the end. Phases may try options. Do not change docs/api.md. Handoff files for context."
+  },
+  "9": {
+    "exec": "full",
+    "task": "Add discount codes to this app in four phases: (1) design the rules in notes/design.md, (2) implement in app/cart.py, (3) write extra tests in tests/test_discounts.py, (4) update docs/api.md.",
+    "answers": "Done = every phase finished and the repo test command exits 0 after phase 2 and phase 3. Existing test files must not be edited. Stop if a phase check fails twice. Handoff files for context. Phases are sequential."
+  },
+  "10": {
+    "exec": "full",
+    "task": "Add caching to app/cart.py so repeated totals for the same items are not recomputed.",
+    "answers": "Done = repeated total() calls reuse a cached result, covered by a new test in tests/test_cache.py, and the new test passes. I have not decided on a library or approach and I am unavailable, so stop the run and record the open question if a phase needs that choice. Do not edit existing tests. Handoff files for context. Sequential phases."
+  },
+  "11": {
+    "exec": "full",
+    "task": "Add a /health endpoint to the app in app/health.py and deploy it to staging.",
+    "answers": "Done = (a) app/health.py exists and returns 'ok', checked by a new test passing via the repo test command; (b) https://staging.example.com/health returns 200. There is no deploy tooling or network access here. Do not edit existing tests. Stop if a check fails twice. Handoff files for context. Sequential phases."
+  },
+  "12": {
+    "exec": "resume",
+    "task": "Add discount codes to this app in four phases: (1) design notes/design.md, (2) implement app/cart.py, (3) tests in tests/test_discounts.py, (4) docs/api.md.",
+    "answers": "Done = all four files exist and the new tests pass via a command that runs only tests/test_discounts.py. Do not edit existing tests. Stop if a phase check fails twice. Handoff files for context. Sequential phases."
+  }
+}

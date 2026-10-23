@@ -14,14 +14,14 @@ If the task fits one short pass, say so in one line and just do it. Subagents re
 
 ## 2. Look before asking
 
-Read the repo for what you would otherwise ask: test, build and lint commands, CLAUDE.md, existing plans. Never ask what you can read.
+Read the repo for what you would otherwise ask: test, build and lint commands, CLAUDE.md, existing plans and shared progress files such as TODO.md. Never ask what you can read. If `.route/` already exists, resume from `plan.md` and the latest handoff instead of re-planning.
 
 ## 3. Interview
 
 Ask one question at a time. Ask only what you could not find, and stop as soon as you can write the plan. Cover, in this order:
 
-1. What does done look like? Push for checkable statements, not "works well".
-2. How is each statement verified? Prefer a command (tests, build). Otherwise name a reviewer subagent and its rubric.
+1. What does done look like? Prefer checkable statements over "works well". If part of the goal is exploratory and the user cannot state it up front, keep it as an open criterion (a direction, judged at the end) rather than forcing a rigid one.
+2. How is each checkable statement verified? Prefer a command (tests, build). Otherwise name a reviewer subagent and its rubric. Open criteria are judged by the reviewer or by the user at the end, and phases may try options and record what was tried.
 3. What stops the run? Failed verification twice, a missing decision, a scope boundary hit.
 4. What must not change?
 
@@ -31,7 +31,8 @@ Work out the architecture from the task and the repo, then confirm it with the u
 
 1. **Sequential?** Which phases need the output of an earlier one? If there is a sequence, ask how context should pass between the steps: a handoff file (the default), an existing file or artifact the steps already share, or something else. Those phases run in order.
 2. **Parallel?** Which pieces are independent: no shared files, no shared decisions? If there are any, ask where each piece writes its output and how the results are combined. Those pieces can run as concurrent subagents. Parallel runs multiply cost, so suggest this only when the pieces are large and truly independent.
-3. **More domains?** Does the task touch areas the user did not mention, such as tests, docs, migrations, security or deployment? Suggest a specialist subagent for each domain, with its own acceptance criteria, and let the user accept, change or drop each one.
+3. **Several domains?** If the task is itself made of separate domains (for example finance, marketing and sales), give each domain its own agent with its own inputs, output and acceptance criteria. Sequence domains that feed each other, run the rest in parallel, then add a final phase that reconciles them.
+4. **Extra domains?** Does the task touch areas the user did not mention, such as tests, docs, migrations, security or deployment? Suggest a specialist subagent for each domain, with its own acceptance criteria, and let the user accept, change or drop each one.
 
 State the result as a short dependency list, for example: `A -> B`, `C and D in parallel -> E`.
 
@@ -40,7 +41,7 @@ State the result as a short dependency list, for example: `A -> B`, `C and D in 
 Write `.route/plan.md`:
 
 - **Goal**: two sentences.
-- **Acceptance criteria**: checklist, each with how it is verified.
+- **Acceptance criteria**: checklist. Hard criteria say how they are verified. Open criteria are marked as such and say who judges them.
 - **Out of scope**: what must not change.
 - **Phases**: each with input, output, its check, its domain and what it depends on. Mark phases that run in parallel. A phase must be small enough to finish in one fresh context.
 - **Stop conditions**: from the interview.
@@ -60,4 +61,4 @@ The main session reads only the handoff, never the phase transcript. Parallel ph
 
 ## 7. Finish
 
-When all phases pass, check every acceptance criterion against the plan. Report each as met or not met with the evidence. Do not report success on criteria you did not verify.
+When all phases pass, check every acceptance criterion against the plan. Report each as met or not met with the evidence; judge open criteria and say who or what judged them. Do not report success on criteria you did not verify.
