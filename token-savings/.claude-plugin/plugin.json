@@ -1,6 +1,6 @@
 {
   "name": "token-savings",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Bundle: Caveman (conversation) and Ponytail (code) from the token-saving post.",
   "dependencies": ["caveman", "ponytail"]
 }
