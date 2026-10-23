@@ -1,0 +1,27 @@
+{
+  "name": "token-savings",
+  "owner": { "name": "Leandro" },
+  "plugins": [
+    {
+      "name": "token-savings",
+      "description": "Caveman + Ponytail in one install, pinned to tested commits.",
+      "source": "./token-savings"
+    },
+    {
+      "name": "caveman",
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman",
+        "sha": "bad48a0e1df55e05e3f52249afa35ecc1909ee76"
+      }
+    },
+    {
+      "name": "ponytail",
+      "source": {
+        "source": "github",
+        "repo": "dietrichgebert/ponytail",
+        "sha": "09c434ab73ca43761c5d8b0c5d341926c2fba710"
+      }
+    }
+  ]
+}
