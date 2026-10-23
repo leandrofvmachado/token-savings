@@ -10,7 +10,7 @@ Both are referenced from their upstream repos, pinned to tested commits. Nothing
 ## Install
 
 ```
-/plugin marketplace add <owner>/token-savings
+/plugin marketplace add leandrofvmachado/token-savings
 /plugin install token-savings@token-savings
 ```
 
